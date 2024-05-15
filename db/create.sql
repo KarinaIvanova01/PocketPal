@@ -55,11 +55,9 @@ create table transactions
         primary key,
     sender_id      int      not null,
     recipient_id   int      not null,
-    amount         int      not null,
+    amount         decimal(10,2)      not null,
     date           datetime not null,
-    category_id    int      not null,
-    constraint transactions_categories_category_id_fk
-        foreign key (category_id) references categories (category_id),
+
     constraint transactions_users_user_id_fk
         foreign key (sender_id) references users (user_id),
     constraint transactions_users_user_id_fk2
@@ -71,9 +69,12 @@ create table wallet
     wallet_id   int auto_increment
         primary key,
     name        varchar(30) not null,
-    saldo       int         not null,
+    amount       decimal(10,2)         not null,
     currency_id int         not null,
     user_id     int         not null,
+    category_id int         not null ,
+    constraint wallet_categories_category_id_fk
+foreign key (category_id) references categories (category_id),
     constraint wallet_currency_currency_id_fk
         foreign key (currency_id) references currency (currency_id),
     constraint wallet_users_user_id_fk
@@ -90,12 +91,11 @@ create table cards
     expiration_date datetime not null,
     type_id         int      not null,
     user_id         int      not null,
-    wallet_id       int      not null,
+
     constraint cards___fk
         foreign key (user_id) references users (user_id),
     constraint cards_card_types_id_fk
-        foreign key (type_id) references card_types (id),
-    constraint cards_wallet_wallet_id_fk
-        foreign key (wallet_id) references wallet (wallet_id)
+        foreign key (type_id) references card_types (id)
+
 );
 

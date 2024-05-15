@@ -1,6 +1,7 @@
 package com.pocketpal.models;
 
 import jakarta.persistence.*;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,6 +11,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @NoArgsConstructor
+@EqualsAndHashCode
 @Entity
 @Table(name = "users")
 public class User {
@@ -22,16 +24,16 @@ public class User {
     @Column(name = "username")
     private String username;
 
-    @Column(name ="password")
+    @Column(name = "password")
     private String password;
 
-    @Column(name ="email")
+    @Column(name = "email")
     private String email;
 
     @Column(name = "photo")
     private String photoUrl;
 
-    @Column(name ="joined_data", updatable = false)
+    @Column(name = "joined_data", updatable = false)
     private LocalDateTime joinedData;
 
     @Column(name = "isAdmin")
@@ -40,7 +42,6 @@ public class User {
     @ManyToOne
     @Column(name = "status_id")
     private Status status;
-
 
 
 }

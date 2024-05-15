@@ -22,5 +22,4 @@ public class Status {
     private StatusType statusType;
 
 
-
 }

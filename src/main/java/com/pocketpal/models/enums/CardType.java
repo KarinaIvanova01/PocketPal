@@ -7,7 +7,7 @@ public enum CardType {
 
     @Override
     public String toString() {
-        return switch (this){
+        return switch (this) {
             case Credit -> "Credit";
             case Debit -> "Debit";
             case None -> "None";
